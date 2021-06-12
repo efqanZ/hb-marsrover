@@ -1,13 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\MarsRover.Core\MarsRover.Core.csproj" />
-    <ProjectReference Include="..\MarsRover.Infrastructure\MarsRover.Infrastructure.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MarsRover.Core\MarsRover.Core.csproj" />
+    <ProjectReference Include="..\MarsRover.Infrastructure\MarsRover.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
 </Project>

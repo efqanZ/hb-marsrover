@@ -1,15 +1,14 @@
 using System;
 using MarsRover.Core.Enums;
 
-namespace MarsRover.Core.Models
+namespace MarsRover.Core.Dtos
 {
-    public class Rover
+    public class RoverDto
     {
-        public Guid Uuid { get; set; }
+        public Guid RoverUuid { get; set; }
         public int PositionX { get; set; }
         public int PositionY { get; set; }
         public RoverDirection Direction { get; set; }
-        public string Commands { get; set; }
-        public virtual Plateau Plateau { get; set; }
+        public PlateauDto Plateau { get; set; }
     }
 }
