@@ -67,7 +67,6 @@ namespace MarsRover.ConsoleApp
                 foreach (var rover in plateau.Rovers)
                 {
                     Console.WriteLine($"\n{rover.PositionX} {rover.PositionY} {rover.Direction}");
-                    Console.WriteLine($"The rover landed at point ({rover.PositionX} {rover.PositionY}) and the rover is facing direction '{rover.Direction}'.");
                 }
             }
 

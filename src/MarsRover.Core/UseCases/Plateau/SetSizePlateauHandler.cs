@@ -20,12 +20,8 @@ namespace MarsRover.Core.UseCases.Plateau
         public async Task<PlateauDto> Handle(SetSizePlateauRequest request, CancellationToken cancellationToken)
         {
             var splittedSize = request.PlateauSize.Split(' ');
-
-            if (!int.TryParse(splittedSize[0], out int width) ||
-                !int.TryParse(splittedSize[1], out int height) ||
-                width == 0 || height == 0)
-                throw new PlateauSizeException("Please type two numbers (except 0) with one space character between them.");
-
+            int width = int.Parse(splittedSize[0]);
+            int height = int.Parse(splittedSize[1]);
 
             await _plateauService.SetSize(width, height);
 

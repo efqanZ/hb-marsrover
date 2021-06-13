@@ -9,6 +9,5 @@ namespace MarsRover.Core.Models
         public int PositionX { get; set; }
         public int PositionY { get; set; }
         public RoverDirection Direction { get; set; }
-        public string Commands { get; set; }
     }
 }

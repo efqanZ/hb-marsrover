@@ -15,9 +15,9 @@ namespace MarsRover.Infrastructure.Services
         {
             model.Uuid = Guid.NewGuid();
 
-            if (model.PositionX > Plateau.Width || model.PositionY > Plateau.Height)
+            if (model.PositionX > Plateau.Width || model.PositionY > Plateau.Height || model.PositionX<=0 || model.PositionY<=0)
                 throw new PlateauSizeException();
-
+            
             Plateau.Rovers.Add(model);
 
             await Task.CompletedTask;
@@ -26,6 +26,9 @@ namespace MarsRover.Infrastructure.Services
         public async Task<Rover> Get(Guid uuid)
         {
             var rover = Plateau.Rovers.FirstOrDefault(ap => ap.Uuid == uuid);
+            if (rover == null)
+                throw new ArgumentNullException();
+
             await Task.CompletedTask;
 
             return rover;

@@ -9,6 +9,6 @@ namespace MarsRover.Core.Models
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public virtual ICollection<Rover> Rovers { get; set; }
+        public virtual List<Rover> Rovers { get; set; }
     }
 }
