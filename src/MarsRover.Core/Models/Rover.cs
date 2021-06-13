@@ -10,6 +10,5 @@ namespace MarsRover.Core.Models
         public int PositionY { get; set; }
         public RoverDirection Direction { get; set; }
         public string Commands { get; set; }
-        public virtual Plateau Plateau { get; set; }
     }
 }

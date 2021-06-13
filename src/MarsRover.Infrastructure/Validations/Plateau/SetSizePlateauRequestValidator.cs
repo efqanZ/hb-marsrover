@@ -3,9 +3,9 @@ using MarsRover.Core.Dtos.Request;
 
 namespace MarsRover.Infrastructure.Validations.Plateau
 {
-    public class AddPlateauRequestValidator : AbstractValidator<AddPlateauRequest>
+    public class SetSizePlateauRequestValidator : AbstractValidator<SetSizePlateauRequest>
     {
-        public AddPlateauRequestValidator()
+        public SetSizePlateauRequestValidator()
         {
             //ToDo:!!
         }

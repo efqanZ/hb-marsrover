@@ -9,6 +9,5 @@ namespace MarsRover.Core.Dtos
         public int PositionX { get; set; }
         public int PositionY { get; set; }
         public RoverDirection Direction { get; set; }
-        public PlateauDto Plateau { get; set; }
     }
 }

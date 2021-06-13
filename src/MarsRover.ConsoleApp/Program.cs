@@ -25,27 +25,50 @@ namespace MarsRover.ConsoleApp
             Console.WriteLine("Welcome to the HB Mars Rover");
             Console.WriteLine("*******************************************");
 
-            var mediator = provider.GetService<Mediator>();
-            List<PlateauDto> plateauList = new List<PlateauDto>();
+            var mediator = provider.GetService<IMediator>();
+
+            Console.WriteLine("\nPlease enter the plateau (like '6 6'): ");
+            var size = Console.ReadLine();
+            var plateau = await mediator.Send(new SetSizePlateauRequest { PlateauSize = size });
+
             while (true)
             {
-                Console.WriteLine("\nPlease enter the plateau (like '6 6'): ");
-                var size = Console.ReadLine();
-                var plateau = await mediator.Send(new AddPlateauRequest { PlateauSize = size });
-                plateauList.Add(plateau);
+                try
+                {
 
-                Console.WriteLine("\nEnter position for rover (like '1 2 N'): ");
-                var position = Console.ReadLine();
-                
+                    Console.WriteLine("\nEnter position for rover (like '1 2 N'): ");
+                    var position = Console.ReadLine();
+                    var rover = await mediator.Send(new AddRoverRequest { Position = position });
 
-                //ToDo:!!
+                    Console.WriteLine("\nEnter your rover commands (like 'LMLMLMLMM'): ");
+                    var commands = Console.ReadLine();
+                    rover = await mediator.Send(new MoveRoverRequest { RoverUuid = rover.RoverUuid, Commands = commands });
 
+                    plateau.Rovers.Add(rover);
+
+                }
+                catch (System.Exception ex)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"\n{ex.Message}");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
 
                 Console.WriteLine("\nDo you want to add another Rover?(Y/N): ");
                 var answer = Console.ReadLine();
 
                 if (answer.ToLower() != "y")
                     break;
+            }
+
+
+            if (plateau.Rovers != null)
+            {
+                foreach (var rover in plateau.Rovers)
+                {
+                    Console.WriteLine($"\n{rover.PositionX} {rover.PositionY} {rover.Direction}");
+                    Console.WriteLine($"The rover landed at point ({rover.PositionX} {rover.PositionY}) and the rover is facing direction '{rover.Direction}'.");
+                }
             }
 
 

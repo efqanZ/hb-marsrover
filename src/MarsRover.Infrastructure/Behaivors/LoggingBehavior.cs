@@ -37,7 +37,7 @@ namespace MarsRover.Infrastructure.Behaivors
             catch (Exception ex)
             {
                 _logger.LogError(ex, "[ERR] {requestName} {expMesage}", requestId, ex.Message);
-                throw;
+                throw ex;
             }
             finally
             {

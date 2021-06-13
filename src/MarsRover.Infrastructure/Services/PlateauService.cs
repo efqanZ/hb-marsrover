@@ -6,18 +6,17 @@ using MarsRover.Core.Models;
 
 namespace MarsRover.Infrastructure.Services
 {
-    public class PlateauService : IPlateauService
+    public class PlateauService : BaseService, IPlateauService
     {
-        private static List<Plateau> PlateauList = new List<Plateau>();
         public PlateauService()
         {
 
         }
 
-        public async Task Add(Plateau model)
+        public async Task SetSize(int width, int height)
         {
-            model.Uuid = Guid.NewGuid();
-            PlateauList.Add(model);
+            Plateau.Width = width;
+            Plateau.Height = height;
             
             await Task.CompletedTask;
         }

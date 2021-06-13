@@ -5,6 +5,6 @@ namespace MarsRover.Core.Interfaces.Service
 {
     public interface IPlateauService
     {
-        Task Add(Plateau model);
+        Task SetSize(int width, int height);
     }
 }
